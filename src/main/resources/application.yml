@@ -1,0 +1,18 @@
+server:
+  port: 8888
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/test?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    driver-class-name:com.mysql.jdbc.Driver
+  mybatis:
+    mapper-locations: classpath:com.testkshdata.dci.testdata.mapper/*.xml
+    type-aliases-package: com.testkshdata.dci.testdata.pojo
+# 热部署开关，false即不启用热部署
+#  spring.devtools.restart.enabled=true
+  # 指定热部署更新的目录
+#  spring.devtools.restart.additional-paths=src/main
+  # 热部署指定目录不更新
+#  spring.devtools.restart.exclude=src/test/**
