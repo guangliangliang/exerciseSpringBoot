@@ -2,6 +2,9 @@ package com.testkshdata.dci.testdata.mapper;
 
 import com.testkshdata.dci.testdata.pojo.MainLayers;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
 
 @Mapper
 public interface MainLayersMapper {
@@ -54,4 +57,8 @@ public interface MainLayersMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(MainLayers record);
+
+    @Select("#{sql}")
+    List<Object> getSqlData(String sql);
+
 }

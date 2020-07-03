@@ -5,7 +5,7 @@ import com.testkshdata.dci.testdata.pojo.MainLayers;
 import com.testkshdata.dci.testdata.service.HelloService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import java.util.List;
 @Service
 public class HelloServiceImpl implements HelloService {
 
@@ -21,5 +21,12 @@ public class HelloServiceImpl implements HelloService {
        String b = "test";
        String result = a+b;
         return MainLayersObj;
+    }
+
+    @Override
+    public List<Object> getSqlData(String sql) {
+        List<Object>  data = mainLayersMapper.getSqlData(sql);
+        String  data2 = "";
+        return data;
     }
 }

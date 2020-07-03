@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -44,8 +45,9 @@ public class HelloController {
 
 
     @RequestMapping("/mapData")
-    public String mapData(){
-        return this.getObjectData(mapTestData).toString();
+    public Object mapData(){
+        Object value = this.getObjectData(chartTestData);
+        return value;
     }
 
     public Object getObjectData(Resource JsonData){
@@ -62,8 +64,9 @@ public class HelloController {
     }
 
     @RequestMapping("/chartData")
-    public String chartData(){
-        return this.getObjectData(chartTestData).toString();
+    public Object chartData(){
+        Object value = this.getObjectData(chartTestData);
+        return value;
     }
 
 
@@ -73,6 +76,13 @@ public class HelloController {
         MainLayers data = helloService.getMainLayerAllDatas();
         return data;
     }
+
+    @RequestMapping(value = "/geoSqlData/{sql}",method= RequestMethod.GET)
+    public List<Object> geoSqlData(@PathVariable("sql")  String sql){
+        return helloService.getSqlData(sql);
+    }
+
+
 
     @RequestMapping(value = "/selectGetOneMainLayer/{layerId}",method= RequestMethod.GET)
     public ResultVo selectGetOneMainLayer(@PathVariable("layerId")  Integer layerId){
